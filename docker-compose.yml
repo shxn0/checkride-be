@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+  # FastAPI
+  api:
+    container_name: "backend"
+    build:
+      context: ./backend
+    restart: always
+    working_dir: "/var/www/src"
+    volumes:
+      - ./backend:/var/www
+    tty: true
+    ports:
+      - 8000:8000
+    command: uvicorn main:api --reload --host 0.0.0.0 --port 8000

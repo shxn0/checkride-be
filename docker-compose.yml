@@ -5,11 +5,11 @@ services:
   api:
     container_name: "backend"
     build:
-      context: ./backend
+      context: .
     restart: always
     working_dir: "/var/www/src"
     volumes:
-      - ./backend:/var/www
+      - .:/var/www
     tty: true
     ports:
       - 8000:8000

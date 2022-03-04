@@ -9,24 +9,27 @@ spec:
     - name: pipeline-shared-data
       description: |
         This workspace stores the cloned repository and is available to all steps
+    - name: git-basic-auth
+
   params:
     - name: image-repo
       type: string
       description: Docker image name
-      # default: quay.io/shinnosuke_yoshizawa_ibm/express-sample-app
+      default: quay.io/shinnosuke_yoshizawa_ibm/checkride-be
       # default: quay.io/shinnosuke_yoshizawa_ibm/express-sample-app
   tasks:
     - name: clone-repository
       params:
         - name: url
-          # value: https://github.com/cloud-native-garage-method-japan-cohort/shinnosuke-yoshizawa-express-sample-app
-          # value: https://github.com/upslopeio/express-sample-app
+          value: https://github.com/shxn0/checkride-be.git
       taskRef:
         kind: Task
         name: git-clone
       workspaces:
         - name: output
           workspace: pipeline-shared-data
+        - name: basic-auth
+          workspace: git-basic-auth
 
     # ここから追記
     - name: install-dependencies
@@ -74,6 +77,7 @@ spec:
         - build-image
       params:
         - name: image-with-tag
+          value: "quay.io/shinnosuke_yoshizawa_ibm/checkride-be=$(params.image-repo):latest"
           # value: "quay.io/dotnsf/express-sample-app=$(params.image-repo):latest"
           # value: "quay.io/shinnosuke_yoshizawa_ibm/express-sample-app=$(params.image-repo):$(tasks.clone-repository.results.commit)"
       taskRef:

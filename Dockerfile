@@ -8,6 +8,7 @@ RUN apk add --no-cache build-base \
  && pip install --upgrade pip \
  && pip install uvicorn \
  && pip install fastapi \
+ && pip install pytest \
  && pip install python-multipart \
  && pip install requests \
  && pip install --upgrade "ibm-watson>=5.3.1" \

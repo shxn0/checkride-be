@@ -3,13 +3,13 @@ kind: PipelineRun
 metadata:
   generateName: backend-pipeline-run-
 spec:
-  # serviceAccountName: build-bot
+  serviceAccountName: build-bot
   pipelineRef:
     name: backend-pipeline
   workspaces:
     - name: pipeline-shared-data
       persistentVolumeClaim:
         claimName: backend-pvc
-    # - name: git-auth
-    #   secret:
-    #     secretName: git-auth
+    - name: git-basic-auth
+      secret:
+        secretName: git-credentials

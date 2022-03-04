@@ -1,29 +1,29 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  annotations:
-    #app.openshift.io/vcs-ref: f7580aa1eb6f7176705176e201ecff4de93edafb
-    #app.openshift.io/vcs-uri: https://github.com/cloud-native-garage-method-japan-cohort/kei-kimura-express-sample-app.git
+  # annotations:
+  # app.openshift.io/vcs-ref: f7580aa1eb6f7176705176e201ecff4de93edafb
+  #app.openshift.io/vcs-uri: https://github.com/cloud-native-garage-method-japan-cohort/kei-kimura-express-sample-app.git
   labels:
-    app: kei-kimura-pipeline-from-scratch
-    app.kubernetes.io/instance: kei-kimura-pipeline-from-scratch
-    app.kubernetes.io/name: kei-kimura-pipeline-from-scratch
+    app: backend-app
+    app.kubernetes.io/instance: backend-app
+    app.kubernetes.io/name: backend-app
     app.openshift.io/runtime: js
-  name: kei-kimura-pipeline-from-scratch
+  name: backend-app
 spec:
   progressDeadlineSeconds: 600
   replicas: 1
   revisionHistoryLimit: 10
   selector:
     matchLabels:
-      app.kubernetes.io/instance: kei-kimura-pipeline-from-scratch
-      app.kubernetes.io/name: kei-kimura-pipeline-from-scratch
+      app.kubernetes.io/instance: backend-app
+      app.kubernetes.io/name: backend-app
   template:
     metadata:
       creationTimestamp: null
       labels:
-        app.kubernetes.io/instance: kei-kimura-pipeline-from-scratch
-        app.kubernetes.io/name: kei-kimura-pipeline-from-scratch
+        app.kubernetes.io/instance: backend-app
+        app.kubernetes.io/name: backend-app
     spec:
       containers:
         - env:
@@ -31,20 +31,20 @@ spec:
             - name: PROTOCOLS
             - name: LOG_LEVEL
               value: debug
-          image: quay.io/dotnsf/express-sample-app-day5
+          image: quay.io/shinnosuke_yoshizawa_ibm/checkride-be:latest
           imagePullPolicy: IfNotPresent
           livenessProbe:
             failureThreshold: 3
             httpGet:
               path: /
-              port: 3000
+              port: 8080
               scheme: HTTP
             periodSeconds: 10
             successThreshold: 1
             timeoutSeconds: 1
-          name: kei-kimura-pipeline-from-scratch
+          name: backend-app
           ports:
-            - containerPort: 3000
+            - containerPort: 8080
               name: http
               protocol: TCP
           readinessProbe:

@@ -11,6 +11,5 @@ spec:
   to:
     kind: Service
     name: backend-app-service
-    # name: kei-kimura-pipeline-from-scratch
     weight: 100
   wildcardPolicy: None

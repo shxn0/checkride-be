@@ -32,35 +32,37 @@ spec:
           workspace: git-basic-auth
 
     # ここから追記
-    - name: install-dependencies
-      runAfter:
-        - clone-repository
-      taskRef:
-        name: npm
-      workspaces:
-        - name: source
-          workspace: pipeline-shared-data
-      params:
-        - name: ARGS
-          value:
-            - clean-install
+    # - name: install-dependencies
+    #   runAfter:
+    #     - clone-repository
+    #   taskRef:
+    #     name: npm
+    #   workspaces:
+    #     - name: source
+    #       workspace: pipeline-shared-data
+    #   params:
+    #     - name: ARGS
+    #       value:
+    #         - clean-install
 
-    - name: run-tests
-      runAfter:
-        - install-dependencies
-      taskRef:
-        name: npm
-      workspaces:
-        - name: source
-          workspace: pipeline-shared-data
-      params:
-        - name: ARGS
-          value:
-            - test
+    # - name: run-tests
+    #   runAfter:
+    #     - install-dependencies
+    #   taskRef:
+    #     name: npm
+    #   workspaces:
+    #     - name: source
+    #       workspace: pipeline-shared-data
+    #   params:
+    #     - name: ARGS
+    #       value:
+    #         - test
 
     - name: build-image
+      # runAfter:
+      #   - run-tests
       runAfter:
-        - run-tests
+        - clone-repository
       taskRef:
         kind: Task
         name: buildah

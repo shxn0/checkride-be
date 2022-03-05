@@ -3,5 +3,5 @@ kind: Secret
 metadata:
   name: webhook-secret
 stringData:
-  token:
-  secret:
+  token: "YOUR_TOKEN"
+  secret: "YOUR_SECRET"

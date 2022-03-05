@@ -14,6 +14,8 @@ spec:
       image: docker.io/enzobarrett/kustomize:latest
       script: |
         #!/bin/sh
+        echo $PWD
+        echo $(ls)
         cd source/oscp/kustomize/k8s
         kustomize edit set image $(params.image-with-tag)
         kustomize build > manifests.yaml

@@ -6,7 +6,7 @@ services:
     container_name: "backend"
     build:
       context: .
-    restart: always
+    # restart: always
     working_dir: "/var/www/src"
     volumes:
       - .:/var/www

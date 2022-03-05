@@ -1,0 +1,15 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: backend-app-route
+  annotations:
+    argocd.argoproj.io/sync-options: Validate=false
+    openshift.io/host.generated: "true"
+spec:
+  tls:
+    termination: edge
+  to:
+    kind: Service
+    name: backend-app-service
+    weight: 100
+  wildcardPolicy: None

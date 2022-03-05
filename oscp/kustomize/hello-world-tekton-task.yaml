@@ -1,0 +1,16 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: hello-world-tekton-task
+spec:
+  params:
+    - name: hello-world-message
+      type: string
+      default: "Hello, world!"
+  steps:
+    - image: quay.io/ibmgaragecloud/alpine-curl
+      name: first-step
+      resources: {}
+      script: |
+        echo $(params.hello-world-message)
+        echo 'Script complete.'

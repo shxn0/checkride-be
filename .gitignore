@@ -1,3 +1,4 @@
 .env
 .vscode
-oscp/k8s/service-account/*
+oscp/service-account/*
+.DS_Store

@@ -1,11 +1,11 @@
 apiVersion: triggers.tekton.dev/v1alpha1
 kind: EventListener
 metadata:
-  name: backend-event-listener
+  name: event-listener-for-backend
 spec:
   serviceAccountName: tekton-triggers-sa
   triggers:
     - bindings:
-        - ref: backend-triggerbinding
+        - ref: backend-trigger-binding
       template:
-        ref: backend-triggertemplate
+        ref: backend-trigger-template

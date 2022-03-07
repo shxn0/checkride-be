@@ -8,7 +8,7 @@ metadata:
     app: backend-app
     app.kubernetes.io/instance: backend-app
     app.kubernetes.io/name: backend-app
-    app.openshift.io/runtime: js
+    app.openshift.io/runtime: python
   name: backend-app
 spec:
   progressDeadlineSeconds: 600
@@ -31,20 +31,35 @@ spec:
             - name: PROTOCOLS
             - name: LOG_LEVEL
               value: debug
-          image: quay.io/shinnosuke_yoshizawa_ibm/checkride-be:latest
+            - name: WATSON_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: ibm-text-to-speech-secret
+                  key: api-key
+            - name: WATSON_ENDPOINT
+              valueFrom:
+                secretKeyRef:
+                  name: ibm-text-to-speech-secret
+                  key: endpoint
+            - name: FRONTEND_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: app-config
+                  key: frontend_url
+          image: quay.io/shinnosuke_yoshizawa_ibm/checkride-be
           imagePullPolicy: IfNotPresent
           livenessProbe:
             failureThreshold: 3
             httpGet:
               path: /
-              port: 8080
+              port: 8000
               scheme: HTTP
             periodSeconds: 10
             successThreshold: 1
             timeoutSeconds: 1
           name: backend-app
           ports:
-            - containerPort: 8080
+            - containerPort: 8000
               name: http
               protocol: TCP
           readinessProbe:

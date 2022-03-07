@@ -7,3 +7,4 @@ WATSON_ENDPOINT = os.getenv('WATSON_ENDPOINT')
 CONTENT_TYPE = 'audio/wav'
 FILE_PATH = '../files/'
 MODEL = 'ja-JP_NarrowbandModel'
+FRONTEND_URL = os.getenv('FRONTEND_URL')

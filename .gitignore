@@ -1,5 +1,4 @@
 .env
 .vscode
 oscp/service-account/*
-oscp/trigger/webhook.yaml
 .DS_Store

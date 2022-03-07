@@ -71,16 +71,16 @@ spec:
           workspace: pipeline-shared-data
       params:
         - name: IMAGE
-          value: "$(params.image-repo):latest"
-          # value: "$(params.image-repo):$(tasks.clone-repository.results.commit)"
+          # value: "$(params.image-repo):latest"
+          value: "$(params.image-repo):$(tasks.clone-repository.results.commit)"
 
     - name: kustomize-build
       runAfter:
         - build-image
       params:
         - name: image-with-tag
-          value: "quay.io/shinnosuke_yoshizawa_ibm/checkride-be=$(params.image-repo):latest"
-          # value: "quay.io/dotnsf/express-sample-app=$(params.image-repo):latest"
+          value: "quay.io/shinnosuke_yoshizawa_ibm/checkride-be=$(params.image-repo):$(tasks.clone-repository.results.commit)"
+          # value: "quay.io/shinnosuke_yoshizawa_ibm/checkride-be=$(params.image-repo):latest"
           # value: "quay.io/shinnosuke_yoshizawa_ibm/express-sample-app=$(params.image-repo):$(tasks.clone-repository.results.commit)"
       taskRef:
         kind: Task

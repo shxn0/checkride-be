@@ -1,7 +1,7 @@
 apiVersion: triggers.tekton.dev/v1alpha1
 kind: TriggerTemplate
 metadata:
-  name: backend-triggertemplate
+  name: backend-trigger-template
 spec:
   resourcetemplates:
     - apiVersion: tekton.dev/v1beta1
@@ -16,3 +16,6 @@ spec:
           - name: pipeline-shared-data
             persistentVolumeClaim:
               claimName: backend-pvc
+          - name: git-basic-auth
+            secret:
+              secretName: git-credentials

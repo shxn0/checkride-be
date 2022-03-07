@@ -1,10 +1,11 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from speech_to_text.controller import router as speech_router
+import config
 
 api = FastAPI()
 origins = [
-    "http://localhost:3000"
+    config.FRONTEND_URL
 ]
 
 api.add_middleware(

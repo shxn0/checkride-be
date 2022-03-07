@@ -66,7 +66,8 @@ spec:
             failureThreshold: 3
             httpGet:
               path: /
-              port: http
+              port: 8000
+              # このポート
               scheme: HTTP
             periodSeconds: 10
             successThreshold: 1

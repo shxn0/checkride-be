@@ -17,4 +17,5 @@ RUN apk add --no-cache build-base \
 WORKDIR /var/www/src
 # COPY . .
 COPY . /var/www
-CMD [ "uvicorn", "src.main:api", "--reload", "--host", "0.0.0.0", "--port", "8000"]
+# CMD [ "uvicorn", "src.main:api", "--reload", "--host", "0.0.0.0", "--port", "8000"]
+CMD [ "uvicorn", "main:api", "--reload", "--host", "0.0.0.0", "--port", "8000"]

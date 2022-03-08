@@ -47,16 +47,8 @@ spec:
                   name: app-config
                   key: frontend_url
           image: quay.io/shinnosuke_yoshizawa_ibm/checkride-be
-          args:
-            - /bin/sh
-            - -c
-            - touch /tmp/healthy; sleep 30; rm -rf /tmp/healthy; sleep 600
           imagePullPolicy: IfNotPresent
           livenessProbe:
-            exec:
-              command:
-                - cat
-                - /tmp/healthy
             failureThreshold: 3
             httpGet:
               path: /health

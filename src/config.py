@@ -8,5 +8,3 @@ CONTENT_TYPE = 'audio/wav'
 FILE_PATH = '../files/'
 MODEL = 'ja-JP_NarrowbandModel'
 FRONTEND_URL = os.getenv('FRONTEND_URL')
-print('xxxxxxxxxxx')
-print(FRONTEND_URL, flush=True)

@@ -1,13 +1,10 @@
 from fastapi import APIRouter, File, UploadFile
 from fastapi.responses import JSONResponse
 from ibm_watson import ApiException
-import time
 from . import service as service
-from .. import config
+import config
 import shutil
 
-print('dddddddddd')
-print(config.FRONTEND_URL, flush=True)
 
 router = APIRouter()
 

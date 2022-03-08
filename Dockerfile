@@ -15,5 +15,6 @@ RUN apk add --no-cache build-base \
  && pip install python-dotenv
 
 WORKDIR /var/www/src
-COPY . .
+# COPY . .
+COPY . /var/www
 CMD [ "uvicorn", "src.main:api", "--reload", "--host", "0.0.0.0", "--port", "8000"]

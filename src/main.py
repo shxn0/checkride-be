@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from speech_to_text.controller import router as speech_router
-import config
+from .speech_to_text.controller import router as speech_router
+from . import config
 
 api = FastAPI()
 origins = [

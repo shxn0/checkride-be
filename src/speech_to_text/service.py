@@ -1,6 +1,6 @@
 from ibm_watson import SpeechToTextV1
 from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
-import config
+from .. import config
 
 async def call(upload_file):
     authenticator = IAMAuthenticator(config.WATSON_API_KEY)

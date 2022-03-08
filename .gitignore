@@ -2,3 +2,4 @@
 .vscode
 oscp/service-account/*
 .DS_Store
+.pyc

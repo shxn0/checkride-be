@@ -13,3 +13,7 @@ RUN apk add --no-cache build-base \
  && pip install requests \
  && pip install --upgrade "ibm-watson>=5.3.1" \
  && pip install python-dotenv
+
+WORKDIR /var/www/src
+COPY . .
+CMD [ "uvicorn", "src.main:api", "--reload", "--host", "0.0.0.0", "--port", "8000"]

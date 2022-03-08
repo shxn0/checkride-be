@@ -2,9 +2,12 @@ from fastapi import APIRouter, File, UploadFile
 from fastapi.responses import JSONResponse
 from ibm_watson import ApiException
 import time
-import speech_to_text.service as service
-import config
+from . import service as service
+from .. import config
 import shutil
+
+print('dddddddddd')
+print(config.FRONTEND_URL, flush=True)
 
 router = APIRouter()
 

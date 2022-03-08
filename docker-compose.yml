@@ -6,11 +6,14 @@ services:
     container_name: "backend"
     build:
       context: .
+      dockerfile: Dockerfile
     # restart: always
     working_dir: "/var/www/src"
     volumes:
       - .:/var/www
     tty: true
+    expose:
+      - 8000
     ports:
       - 8000:8000
     command: uvicorn main:api --reload --host 0.0.0.0 --port 8000
